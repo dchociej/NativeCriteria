@@ -1,6 +1,7 @@
 package com.github.pnowy.nc.utils;
 
-import org.hibernate.annotations.common.util.StringHelper;
+
+import org.hibernate.internal.util.StringHelper;
 
 import java.util.Random;
 

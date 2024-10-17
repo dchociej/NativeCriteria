@@ -9,7 +9,8 @@ import com.github.pnowy.nc.spring.NativeBeanPropertyMapper;
 import com.github.pnowy.nc.spring.SpringNativeCriteria;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Iterables;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.TypeMismatchException;
 import org.springframework.dao.InvalidDataAccessApiUsageException;
 
@@ -76,14 +77,16 @@ public class NativeBeanPropertyMapperTest extends AbstractDbTest {
         assertThat(dtos.size()).isEqualTo(2);
     }
 
-    @Test(expected = InvalidDataAccessApiUsageException.class)
-    public void shouldThrowErrorForNotFullPopulatedDTO() {
-        SpringNativeCriteria nc = createSpringNativeCriteria("SUPPLIER", "s");
-        nc.setProjection(NativeExps.projection().addProjection("s.id", "id"));
-        nc.setOrder(NativeExps.order().add("s.id", NativeOrderExp.OrderType.ASC));
-        NativeBeanPropertyMapper<Supplier> mapper = NativeBeanPropertyMapper.newInstance(Supplier.class);
-        mapper.setCheckFullyPopulated(true);
-        nc.criteriaResult(mapper);
+    @Test
+    public void shouldThrowErrorForNotFullPopulatedDTO() throws InvalidDataAccessApiUsageException {
+        Assertions.assertThrows(Exception.class, () -> {
+            SpringNativeCriteria nc = createSpringNativeCriteria("SUPPLIER", "s");
+            nc.setProjection(NativeExps.projection().addProjection("s.id", "id"));
+            nc.setOrder(NativeExps.order().add("s.id", NativeOrderExp.OrderType.ASC));
+            NativeBeanPropertyMapper<Supplier> mapper = NativeBeanPropertyMapper.newInstance(Supplier.class);
+            mapper.setCheckFullyPopulated(true);
+            nc.criteriaResult(mapper);
+            });
     }
 
     @Test
@@ -106,12 +109,14 @@ public class NativeBeanPropertyMapperTest extends AbstractDbTest {
         assertThat(list.size()).isGreaterThan(0);
     }
 
-    @Test(expected = TypeMismatchException.class)
-    public void shouldThrowExceptionForNullValueForPrimitiveProperty() {
-        SpringNativeCriteria nc = createAddressDTOCriteria();
-        NativeBeanPropertyMapper<AddressPrimitiveDTO> mapper = NativeBeanPropertyMapper.newInstance(AddressPrimitiveDTO.class);
-        List<AddressPrimitiveDTO> list = nc.criteriaResult(mapper);
-        assertThat(list.size()).isGreaterThan(0);
+    @Test
+    public void shouldThrowExceptionForNullValueForPrimitiveProperty() throws TypeMismatchException {
+        Assertions.assertThrows(Exception.class, () -> {
+            SpringNativeCriteria nc = createAddressDTOCriteria();
+            NativeBeanPropertyMapper<AddressPrimitiveDTO> mapper = NativeBeanPropertyMapper.newInstance(AddressPrimitiveDTO.class);
+            List<AddressPrimitiveDTO> list = nc.criteriaResult(mapper);
+            assertThat(list.size()).isGreaterThan(0);
+            });
     }
 
 }

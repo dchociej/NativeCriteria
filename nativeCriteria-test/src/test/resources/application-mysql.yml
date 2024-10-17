@@ -1,6 +1,4 @@
 spring:
-    profiles:
-        active: mysql
     datasource:
         dataSourceClassName: com.mysql.jdbc.Driver
         url: jdbc:mysql://localhost:3306/nativecriteria?serverTimezone=UTC

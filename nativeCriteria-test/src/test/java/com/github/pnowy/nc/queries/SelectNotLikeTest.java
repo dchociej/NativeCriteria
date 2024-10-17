@@ -4,7 +4,7 @@ import com.github.pnowy.nc.AbstractDbTest;
 import com.github.pnowy.nc.core.NativeExps;
 import com.github.pnowy.nc.core.mappers.NativeObjectMapper;
 import com.github.pnowy.nc.spring.SpringNativeCriteria;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.util.List;
 

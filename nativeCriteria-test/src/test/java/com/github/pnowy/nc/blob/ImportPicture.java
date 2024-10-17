@@ -11,6 +11,7 @@ import liquibase.statement.SqlStatement;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.io.IOException;
 import java.io.InputStream;
 import java.sql.PreparedStatement;
 
@@ -25,11 +26,12 @@ public class ImportPicture implements CustomSqlChange {
     @Override
     public SqlStatement[] generateStatements(Database database) throws CustomChangeException {
         JdbcConnection connection = (JdbcConnection) database.getConnection();
-        final String sql = "INSERT INTO IMAGE(NAME, CONTENT) VALUES (?, ?)";
+        final String sql = "INSERT INTO IMAGE(ID, NAME, CONTENT) VALUES (?, ?, ?)";
 
         try (PreparedStatement ps = connection.prepareStatement(sql)) {
-            ps.setString(1, "pn.png");
-            ps.setBlob(2, png);
+            ps.setLong(1, 1L);
+            ps.setString(2, "pn.png");
+            ps.setBlob(3, png);
             ps.executeUpdate();
         } catch (Exception e) {
             log.error("", e);
@@ -44,7 +46,11 @@ public class ImportPicture implements CustomSqlChange {
 
     @Override
     public void setFileOpener(ResourceAccessor resourceAccessor) {
-        png = resourceAccessor.toClassLoader().getResourceAsStream("liquibase/data/pn.png");
+        try {
+            png = resourceAccessor.get("liquibase/data/pn.png").openInputStream();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Override

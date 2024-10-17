@@ -1,49 +1,57 @@
 description "Native Criteria Test"
 
 dependencies {
-    compile project(':nativeCriteria-spring')
-    compile 'org.springframework.boot:spring-boot-starter-aop'
-    compile 'org.springframework.boot:spring-boot-starter-data-jpa'
-    compile 'org.springframework.boot:spring-boot-starter-jdbc'
-    compile 'org.springframework.boot:spring-boot-starter-test'
+    implementation project(':nativeCriteria-spring')
+    implementation project(':nativeCriteria-core')
+    implementation 'org.springframework.boot:spring-boot-starter-aop'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation 'org.springframework.boot:spring-boot-starter-jdbc'
+    implementation 'org.springframework.boot:spring-boot-starter-test'
+    implementation 'com.google.guava:guava'
 
-    testCompile 'org.assertj:assertj-core'
-    testCompile 'ch.qos.logback:logback-classic'
-    testCompile 'org.liquibase:liquibase-core'
-    testCompile 'com.h2database:h2'
+    testImplementation 'org.assertj:assertj-core'
+    testImplementation 'ch.qos.logback:logback-classic'
+    testImplementation 'ch.qos.logback:logback-core'
+    testImplementation 'org.liquibase:liquibase-core'
+    testImplementation 'com.h2database:h2'
+    testImplementation 'org.postgresql:postgresql'
+    testImplementation 'mysql:mysql-connector-java'
+    testImplementation 'com.microsoft.sqlserver:mssql-jdbc'
 }
 
 if (project.hasProperty("postgresql")) {
     dependencies {
-        testCompile 'org.postgresql:postgresql'
+        testImplementation 'org.postgresql:postgresql'
     }
     test {
-        useJUnit {
-            includeCategories "com.github.pnowy.nc.DefaultGroup", "com.github.pnowy.nc.PostgresqlGroup"
+        useJUnitPlatform {
+            includeTags "DefaultGroup","PostgresqlGroup"
         }
     }
 } else if (project.hasProperty("sqlserver")) {
     dependencies {
-        testCompile 'net.sourceforge.jtds:jtds'
+        testImplementation 'net.sourceforge.jtds:jtds'
     }
     test {
-        useJUnit {
-            includeCategories "com.github.pnowy.nc.DefaultGroup", "com.github.pnowy.nc.SqlServerGroup"
+        useJUnitPlatform {
+            includeTags "DefaultGroup", "SqlServerGroup"
         }
     }
 } else if (project.hasProperty("mysql")) {
     dependencies {
-        testCompile 'mysql:mysql-connector-java'
+        testImplementation 'mysql:mysql-connector-java'
     }
     test {
-        useJUnit {
-            includeCategories "com.github.pnowy.nc.DefaultGroup", "com.github.pnowy.nc.MySqlGroup"
+        useJUnitPlatform {
+
+            includeTags "DefaultGroup", "MySqlGroup"
         }
     }
-} else {
+}
+else {
     test {
-        useJUnit {
-            includeCategories "com.github.pnowy.nc.DefaultGroup"
+        useJUnitPlatform {
+            includeTags "DefaultGroup"
         }
     }
 }

@@ -3,7 +3,7 @@ package com.github.pnowy.nc.core.jpa;
 import com.github.pnowy.nc.core.NativeQuery;
 import com.github.pnowy.nc.core.QueryInfo;
 
-import javax.persistence.Query;
+import jakarta.persistence.Query;
 import java.util.Collection;
 import java.util.List;
 

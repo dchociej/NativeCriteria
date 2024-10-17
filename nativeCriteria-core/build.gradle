@@ -1,12 +1,13 @@
 description "Native Criteria Core Module"
 
 dependencies {
-    compileOnly 'org.hibernate:hibernate-core'
-    compile     'com.google.guava:guava'
-    compile     'org.slf4j:slf4j-api'
+    implementation     'org.hibernate:hibernate-core'
+    implementation     'jakarta.persistence:jakarta.persistence-api'
+    implementation     'com.google.guava:guava'
+    implementation     'org.slf4j:slf4j-api'
 
-    testCompile 'junit:junit'
-    testCompile 'org.assertj:assertj-core'
-    testCompile 'org.hibernate:hibernate-core'
-    testCompile 'ch.qos.logback:logback-classic'
+    testImplementation 'junit:junit'
+    testImplementation 'org.assertj:assertj-core'
+    testImplementation 'org.hibernate:hibernate-core'
+    testImplementation 'ch.qos.logback:logback-classic'
 }

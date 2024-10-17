@@ -4,7 +4,7 @@ import com.github.pnowy.nc.AbstractDbTest;
 import com.github.pnowy.nc.core.NativeExps;
 import com.github.pnowy.nc.domain.Address;
 import com.github.pnowy.nc.domain.SupplierWithAddress;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;

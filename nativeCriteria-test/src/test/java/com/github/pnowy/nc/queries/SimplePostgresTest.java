@@ -3,7 +3,7 @@ package com.github.pnowy.nc.queries;
 import com.github.pnowy.nc.AbstractPostgresqlTest;
 import com.github.pnowy.nc.core.CriteriaResult;
 import com.github.pnowy.nc.core.NativeCriteria;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

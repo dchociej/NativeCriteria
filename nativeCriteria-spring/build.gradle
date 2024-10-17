@@ -1,9 +1,9 @@
 description "Native Criteria Spring Integration Module"
 
 dependencies {
-    compile project(':nativeCriteria-core')
-    compileOnly 'org.springframework.data:spring-data-commons'
-    compileOnly 'org.springframework:spring-jdbc'
-
-    testCompile 'org.assertj:assertj-core'
+    implementation project(':nativeCriteria-core')
+    implementation     'org.springframework.data:spring-data-commons'
+    implementation     'org.springframework:spring-jdbc'
+    implementation     'com.google.guava:guava'
+    testImplementation 'org.assertj:assertj-core'
 }

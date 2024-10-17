@@ -1,11 +1,8 @@
 spring:
-    profiles:
-        active: sqlserver
     datasource:
         dataSourceClassName: net.sourceforge.jtds.jdbc.Driver
-        url: jdbc:jtds:sqlserver://127.0.0.1:1433
-        username: nativeCriteria
-        password: nativeCriteria
+        url: jdbc:sqlserver://localhost:1433;databaseName=nativeCriteria;integratedSecurity=false;encrypt=false;
+        username: sa
+        password: sa
     jpa:
-        database-platform: org.hibernate.dialect.SQLServerDialect
         database: SQL_SERVER

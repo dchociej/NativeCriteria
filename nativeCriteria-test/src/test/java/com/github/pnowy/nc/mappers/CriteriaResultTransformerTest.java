@@ -6,7 +6,7 @@ import com.github.pnowy.nc.core.NativeCriteria;
 import com.github.pnowy.nc.core.mappers.CriteriaResultTransformer;
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

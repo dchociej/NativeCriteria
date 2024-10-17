@@ -2,7 +2,6 @@ package com.github.pnowy.nc.core.hibernate;
 
 import com.github.pnowy.nc.core.NativeQuery;
 import com.github.pnowy.nc.core.QueryInfo;
-import org.hibernate.SQLQuery;
 
 import java.util.Collection;
 import java.util.List;
@@ -11,10 +10,10 @@ import java.util.List;
  * <p>Hibernate native query provider.</p>
  */
 public class HibernateNativeQuery implements NativeQuery {
-    private SQLQuery query;
+    private org.hibernate.query.NativeQuery query;
     private QueryInfo queryInfo;
 
-    public HibernateNativeQuery(String sql, SQLQuery sqlQuery) {
+    public HibernateNativeQuery(String sql, org.hibernate.query.NativeQuery sqlQuery) {
         this.queryInfo = new QueryInfo(sql);
         this.query = sqlQuery;
     }
@@ -51,7 +50,7 @@ public class HibernateNativeQuery implements NativeQuery {
     @Override
     public NativeQuery setString(String name, String value) {
         queryInfo.getParameters().put(name, value);
-        query.setString(name, value);
+        query.setParameter(name, value);
         return this;
     }
 

@@ -6,7 +6,7 @@ import com.github.pnowy.nc.core.expressions.NativeOrderExp;
 import com.github.pnowy.nc.domain.ProductDTO;
 import com.github.pnowy.nc.spring.NativeBeanPropertyMapper;
 import com.github.pnowy.nc.spring.SpringNativeCriteria;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

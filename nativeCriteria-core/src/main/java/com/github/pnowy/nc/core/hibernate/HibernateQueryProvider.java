@@ -4,7 +4,7 @@ import com.github.pnowy.nc.core.NativeQuery;
 import com.github.pnowy.nc.core.NativeQueryProvider;
 import org.hibernate.Session;
 
-import javax.persistence.EntityManager;
+import jakarta.persistence.EntityManager;
 
 /**
  * Default hibernate provider.
@@ -22,6 +22,6 @@ public class HibernateQueryProvider implements NativeQueryProvider {
 
     @Override
     public NativeQuery getNativeQuery(String sql) {
-        return new HibernateNativeQuery(sql, session.createSQLQuery(sql));
+        return new HibernateNativeQuery(sql, session.createNativeQuery(sql));
     }
 }

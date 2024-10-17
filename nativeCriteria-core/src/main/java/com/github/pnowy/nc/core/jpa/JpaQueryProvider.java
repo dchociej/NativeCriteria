@@ -3,7 +3,7 @@ package com.github.pnowy.nc.core.jpa;
 import com.github.pnowy.nc.core.NativeQuery;
 import com.github.pnowy.nc.core.NativeQueryProvider;
 
-import javax.persistence.EntityManager;
+import jakarta.persistence.EntityManager;
 
 /**
  * JPA Query provider.

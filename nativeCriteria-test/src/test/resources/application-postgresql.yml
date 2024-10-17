@@ -1,13 +1,10 @@
 spring:
-    profiles:
-        active: postgresql
     datasource:
         dataSourceClassName: org.postgresql.ds.PGSimpleDataSource
-        url: jdbc:postgresql://localhost/nativeCriteria?user=nativeCriteria&password=nativeCriteria
+        url: jdbc:postgresql://localhost:5432/nativeCriteria?user=postgres&password=postgres
         databaseName: nativeCriteria
         serverName: localhost
-        username: nativeCriteria
-        password: nativeCriteria
+        username: postgres
+        password: postgres
     jpa:
-        database-platform: org.hibernate.dialect.PostgreSQL82Dialect
         database: POSTGRESQL
