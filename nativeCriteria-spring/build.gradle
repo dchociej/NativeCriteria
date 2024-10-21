@@ -1,5 +1,22 @@
 description "Native Criteria Spring Integration Module"
-
+publishing {
+    publications {
+        maven(MavenPublication) {
+            groupId = 'com.github.pnowy.nc'
+            artifactId = 'nativeCriteria-spring'
+            version = '4.0.0'
+            from components.java
+            versionMapping {
+                usage('java-api') {
+                    fromResolutionOf('runtimeClasspath')
+                }
+                usage('java-runtime') {
+                    fromResolutionResult()
+                }
+            }
+        }
+    }
+}
 dependencies {
     implementation project(':nativeCriteria-core')
     implementation     'org.springframework.data:spring-data-commons'

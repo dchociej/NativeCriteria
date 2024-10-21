@@ -1,5 +1,10 @@
 # Release notes
 
+#### Release 4.0.0 changes
+
+* Upgrade dependencies (`Hibernate 6.6.1.Final` and `Spring Data 3.3.4` and related)
+* Upgrade Java to 17
+
 #### Release 3.2.0 changes
 
 * Upgrade dependencies (`Hibernate 5.6.10.Final` and `Spring Data 2.3.9` and related)

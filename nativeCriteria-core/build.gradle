@@ -1,5 +1,22 @@
 description "Native Criteria Core Module"
-
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            groupId = 'com.github.pnowy.nc'
+            artifactId = 'nativeCriteria-core'
+            version = '4.0.0'
+            from components.java
+            versionMapping {
+                usage('java-api') {
+                    fromResolutionOf('runtimeClasspath')
+                }
+                usage('java-runtime') {
+                    fromResolutionResult()
+                }
+            }
+        }
+    }
+}
 dependencies {
     implementation     'org.hibernate:hibernate-core'
     implementation     'jakarta.persistence:jakarta.persistence-api'
