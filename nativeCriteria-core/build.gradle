@@ -16,6 +16,17 @@ publishing {
             }
         }
     }
+    repositories {
+        maven {
+            name = "maven-repo"
+            url = ""
+            allowInsecureProtocol = true
+            credentials {
+                username = ''
+                password = ''
+            }
+        }
+    }
 }
 dependencies {
     implementation     'org.hibernate:hibernate-core'

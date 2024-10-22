@@ -39,6 +39,17 @@ allprojects {
                 version = '4.0.0'
             }
         }
+        repositories {
+            maven {
+                name = "maven-repo"
+                url = ""
+                allowInsecureProtocol = true
+                credentials {
+                    username = ''
+                    password = ''
+                }
+            }
+        }
     }
 
     dependencyManagement {
